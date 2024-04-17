@@ -23,3 +23,9 @@ class DQN(nn.Module):
         x = self.fc2(x)
         
         return x # should be the qvalue
+
+
+    def get_action(self, input):
+        qvalue = self.forward(input)
+        action = torch.argmax(qvalue)
+        return action.cpu().numpy()
