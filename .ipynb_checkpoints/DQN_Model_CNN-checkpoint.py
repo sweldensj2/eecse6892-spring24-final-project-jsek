@@ -18,9 +18,9 @@ class DQN_CNN(nn.Module):
 
     def forward(self, x):
         # reshape x from the state [210, 160, 1] --> [1, 210, 160]
-        print("x before", x.shape)
+        # print("x before", x.shape)
         x = x.permute(0, 3, 1, 2)
-        print("x after", x.shape)
+        # print("x after", x.shape)
         
         # Convolutional layers
         x = F.relu(self.conv1(x))
@@ -28,9 +28,9 @@ class DQN_CNN(nn.Module):
         x = F.relu(self.conv3(x))
 
         # Flatten the output of the convolutional layers
-        print("x before flattening", x.shape)
+        # print("x before flattening", x.shape)
         x = x.reshape(x.size(0), -1)
-        print("x after flattening", x.shape)
+        # print("x after flattening", x.shape)
         
         # Fully connected layers
         x = F.relu(self.fc1(x))
