@@ -18,7 +18,10 @@ class DQN_CNN(nn.Module):
 
     def forward(self, x):
         # reshape x from the state [210, 160, 1] --> [1, 210, 160]
-        # print("x before", x.shape)
+        # print("x before", x.shape, )
+        if len(x.shape) == 3:  # Check if the tensor has three dimensions
+            x = torch.unsqueeze(x, 0)  # Unsqueeze the tensor to add a batch dimension
+
         x = x.permute(0, 3, 1, 2)
         # print("x after", x.shape)
         
