@@ -31,8 +31,6 @@ class DTQN(nn.Module):
     
     def get_action(self, input):
         input = input.unsqueeze(0)
-        print(input)
-        print(input.shape)
         qvalue = self.forward(input)
         action = torch.argmax(qvalue)
         return action.cpu().numpy()
