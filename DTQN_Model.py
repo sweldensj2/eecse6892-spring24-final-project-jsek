@@ -20,10 +20,8 @@ class DTQN(nn.Module):
                 nn.init.xavier_uniform_(m.weight)
 
     def forward(self, x):
-        # x = x.transpose(0, 1)
         x = self.fc(x)
         out = self.transformerE(x)
-        # out = out.transpose(0, 1)
         out = F.relu(self.fc1(out))
         qvalue = self.fc2(out)
 
